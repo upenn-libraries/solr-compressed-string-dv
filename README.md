@@ -9,10 +9,7 @@ The access pattern inherent in export (and the associated higher-level
 with [`docValues=true`](https://lucene.apache.org/solr/guide/8_5/exporting-result-sets.html#field-requirements).
 For the common case where it is desirable to publish/export full source metadata,
 this presents a problem when source metadata exceeds 32766 bytes (the maximum
-supported size for Solr's `StrField` field type). A common workaround for this
-situation in the non-export case is to use `TextField`, which is unlimited in size;
-but `TextField` does not support docValues, and is thus not appropriate for the
-export use case.
+supported size for docValues or indexed terms over Solr's `StrField` field type).
 
 This custom fieldType extends `StrField` with support for deflate compression with 
 optional (highly recommended) "dictionary" file. The initial POC, used with MARCXML
